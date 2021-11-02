@@ -1,0 +1,130 @@
+[
+  {
+    "title": "基础管理",
+    "icon": "&#xe653;",
+    "href": "page/news/newsList.html",
+    "spread": true,
+    "children": [
+      {
+        "title": "客户管理",
+        "icon": "&#xe770;",
+        "href": "/page/404.html",
+        "spread": false
+      },
+      {
+        "title": "车辆管理",
+        "icon": "&#xe657;",
+        "href": "page/login/login.html",
+        "spread": false,
+        "target": "_blank"
+      }
+    ]
+  },
+  {
+    "title": "业务管理",
+    "icon": "&#xe663;",
+    "href": "page/img/images.html",
+    "spread": true,
+    "children": [
+      {
+        "title": "汽车出租",
+        "icon": "&#xe65b;",
+        "href": "page/404.html",
+        "spread": false
+      },
+      {
+        "title": "出租单管理",
+        "icon": "&#xe6b2;",
+        "href": "page/login/login.html",
+        "spread": false
+      },
+      {
+        "title": "汽车入库",
+        "icon": "&#xe65a;",
+        "href": "page/404.html",
+        "spread": false
+      },
+      {
+        "title": "检查单管理",
+        "icon": "&#xe705;;",
+        "href": "page/login/login.html",
+        "spread": false,
+        "target": "_blank"
+      }
+    ]
+  },
+  {
+    "title": "系统管理",
+    "icon": "&#xe716;",
+    "href": "",
+    "spread": false,
+    "children": [
+      {
+        "title": "菜单管理",
+        "icon": "&#xe60f;",
+        "href": "page/404.html",
+        "spread": false
+      },
+      {
+        "title": "角色管理",
+        "icon": "&#xe66f;",
+        "href": "page/login/login.html",
+        "spread": false,
+        "target": "_blank"
+      },
+      {
+        "title": "用户管理",
+        "icon": "&#xe770;",
+        "href": "page/login/login.html",
+        "spread": false,
+        "target": "_blank"
+      },
+      {
+        "title": "日志管理",
+        "icon": "&#xe655;",
+        "href": "page/login/login.html",
+        "spread": false
+      },
+      {
+        "title": "系统公告",
+        "icon": "&#xe645;",
+        "href": "page/login/login.html",
+        "spread": false
+      },
+      {
+        "title": "数据源监控",
+        "icon": "&#xe857;",
+        "href": "page/login/login.html",
+        "spread": false
+      }
+    ]
+  },
+  {
+    "title": "统计分析",
+    "icon": "&#xe629;",
+    "href": "",
+    "spread": false,
+    "children": [
+      {
+        "title": "客户地区统计",
+        "icon": "&#xe63c;",
+        "href": "page/404.html",
+        "spread": false
+      },
+      {
+        "title": "公司年度月份销售额",
+        "icon": "&#xe62c;",
+        "href": "page/login/login.html",
+        "spread": false,
+        "target": "_blank"
+      },
+      {
+        "title": "业务员年度销售额",
+        "icon": "&#xe62d;",
+        "href": "page/login/login.html",
+        "spread": false,
+        "target": "_blank"
+      }
+    ]
+  }
+]

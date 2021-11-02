@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--加载数据库配置信息-->
+    <context:property-placeholder location="classpath:db.properties" system-properties-mode="NEVER"/>
+    <!--配置连接池-->
+    <bean id="myDataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driverClassName}"></property>
+        <property name="url" value="${jdbc.url}"></property>
+        <property name="username" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+        <!--设置初始化连接池大小-->
+        <property name="initialSize" value="${jdbc.initialSize}"></property>
+        <!--设置最大活动连接数-->
+        <property name="maxActive" value="${jdbc.maxActive}"></property>
+        <!--设置过滤器-->
+        <property name="filters" value="${jdbc.filters}"></property>
+    </bean>
+
+    <!--DI注解解析器-->
+    <context:annotation-config/>
+    <!--IOC注解解析器-->
+   
+    <context:component-scan base-package="com.ict"/>
+    <!--TX注解解析器-->
+    <bean id="txManger" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="myDataSource"/>
+    </bean>
+    <tx:annotation-driven transaction-manager="txManger"/>
+
+    <!--配置sqlSessionFactory-->
+    <bean id="SqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--连接池 -->
+        <property name="dataSource" ref="myDataSource"/>
+        <!--配置别名扫描-->
+        <property name="typeAliasesPackage" value="ict.domain"/>
+        <!--加载mapper文件-->
+        <property name="mapperLocations" value="classpath:mapperxml/*Mapper.xml"/>
+        <!--配置分页插件-->
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor"></bean>
+            </array>
+        </property>
+    </bean>
+
+    <!--mapper接口代理扫描器-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.ict.*.mapper"></property>
+    </bean>
+</beans>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <meta charset="utf-8">
+    <title>客户地区统计</title>
+</head>
+<body style="height: 100%; margin: 0;padding: 50px">
+<div id="container" style="height: 100%"></div>
+<script src="../../lib/echarts/echarts.min.js"></script>
+<script src="../../lib/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+    $.get("/stat/loadCustomerAreaStatistical", function (data) {
+        var dom = document.getElementById("container");
+        var myChart = echarts.init(dom);
+        var app = {};
+        var option;
+        option = {
+            title: {
+                text: '汽车出租系统客户地址统计',
+                subtext: '',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+            },
+            series: [
+                {
+                    name: '客户数量占比',
+                    type: 'pie',
+                    radius: '50%',
+                    data: data,
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+
+        if (option && typeof option === 'object') {
+            myChart.setOption(option);
+        }
+    });
+</script>
+</body>
+</html>

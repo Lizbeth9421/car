@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/mvc
+		https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <!--包含Spring的核心配置-->
+    <import resource="classpath:applicationContext.xml"/>
+
+    <!--mvc注解解析器-->
+    <mvc:annotation-driven/>
+
+    <!--静态资源处理器-->
+    <mvc:default-servlet-handler/>
+
+    <!--JSP视图解析器-->
+<!--    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!-- 注册拦截器   -->
+    <!-- 对哪些资源做拦截 /*:只能拦截一级路径,
+        如/delete,/save,如果/employee/list就没效果了. /**:可以拦截一级或多级路径. -->
+<!--    <mvc:interceptors>-->
+<!--        <mvc:interceptor>-->
+<!--            <mvc:mapping path="/**"/>-->
+<!--            <mvc:exclude-mapping path="/login"/>&lt;!&ndash;对哪些资源不拦截&ndash;&gt;-->
+<!--            <mvc:exclude-mapping path="/getCode"/>&lt;!&ndash;对哪些资源不拦截&ndash;&gt;-->
+<!--            <bean class="com.ict.system.interceptor.LoginInterceptor"/>-->
+<!--        </mvc:interceptor>-->
+<!--    </mvc:interceptors>-->
+
+
+    <!-- 配置springmvc对文件上传的支持 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 设置文件名的编码 -->
+        <property name="defaultEncoding" value="utf-8"></property>
+        <!-- 配置最上传文件的支持 20M -->
+        <property name="maxUploadSize" value="20971520"></property>
+        <!-- 设置文件上传的临时目录 -->
+    </bean>
+</beans>
